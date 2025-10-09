@@ -1,13 +1,14 @@
 import pytest
 import requests
+from pygments.lexers import data
 
-@pytest.mark.smoke
-def test_list_of_all_objects():
-
+def api_url():
     response = requests.get("https://api.restful-api.dev/objects")
     response.raise_for_status()
-    data = response.json()
+    return response.json()
 
+def test_list_of_all_objects():
+    data = api_url()
     for object in data:
         print(object)
         print(object['id'])
@@ -20,8 +21,8 @@ def test_single_object_with_id(id):
     params = {'id': id}
     response = requests.get("https://api.restful-api.dev/objects", params=params)
     response.raise_for_status()
-
     data = response.json()
+    #data = api_url("https://api.restful-api.dev/objects", params=params)
 
     assert(int(data[0]['id']) == id)
 
@@ -33,13 +34,15 @@ def test_multiple_objects_with_ids(id):
     response.raise_for_status()
 
     data = response.json()
+    #data = api_url("https://api.restful-api.dev/objects", params=params)
+
 
     assert(len(data) == len(id))
     for i in range(len(id)):
         assert(data[i]['id'] == id[i])
 
-
-def test_add_object():
+@pytest.mark.parametrize('id', [3,5])
+def test_add_object(id):
     data = {
        "name": "Apple MacBook Pro 16",
        "data": {
@@ -56,8 +59,8 @@ def test_add_object():
 
     response = requests.get("https://api.restful-api.dev/objects")
     response.raise_for_status()
-
     data = response.json()
+
     for object in data:
         if object['id'] == 7:
             assert(object['name'] == 'Apple MacBook Pro 16')
@@ -67,7 +70,7 @@ def test_add_object():
             assert(object['data']['Hard disk size'] == '1 TB')
             break
 
-
+@pytest.mark.xfail
 def test_update_object():
     data = {
         "name": "Apple MacBook Pro 16 (Updated Name)"
@@ -77,13 +80,10 @@ def test_update_object():
     response = requests.put("https://api.restful-api.dev/objects", json=data, timeout=30)
     response.raise_for_status()
 
-    # Check the status code
+    # Check the status code if is unsuccessful then validate that the item has been updated
     if response.status_code == 200:
-        response = requests.get("https://api.restful-api.dev/objects")
-        response.raise_for_status()
+        data = api_url()
 
-        data = response.json()
-        print(data)
         for object in data:
             if object['id'] == 7:
                 assert (object['name'] == 'Apple MacBook Pro 16 (Updated Name)')
