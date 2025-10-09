@@ -1,4 +1,8 @@
+import pytest
 import requests
 
-def api_url():
-    return "https://api.restful-api.dev/objects"
+@pytest.fixture()
+def api_url(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.json()
