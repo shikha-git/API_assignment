@@ -1,8 +1,15 @@
 This project validates API: "https://api.restful-api.dev/objects".
 
-To run the tests, please install Python and then pytest ("pip install pytest").
+To run the tests, please install Python 3.9 and then pytest ("pip install pytest").
 
-Use **"pytest objects_api.py"** to run all the tests in this file.
+Then run the make file to install venev and then activate it to run tests
+
+make test
+
+source venv/bin/activate
+
+
+Use "pytest objects_api.py" to run all the tests in this file.
 
 To run a particular test, use "pytest objects_api.py -k <test-name>
 
