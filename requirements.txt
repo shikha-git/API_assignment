@@ -1,7 +1,8 @@
 # install the following packages to run the project
 
 # to run the tests in pytest
-pip install pytest
+#pip install pytest
+
 
 # to generate test reports in html, first install pytest-html
 pip install pytest-html
