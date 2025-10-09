@@ -5,6 +5,7 @@ To run the tests, please install Python 3.9 and then pytest ("pip install pytest
 Then run the make file to install venev and then activate it to run tests
 
 make test
+
 source venv/bin/activate
 
 
