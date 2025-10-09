@@ -1,0 +1,14 @@
+# install the following packages to run the project
+
+# to run the tests in pytest
+pip install pytest
+
+# to generate test reports in html, first install pytest-html
+pip install pytest-html
+
+# then run the tests with --html = <filename>.html
+# for e.g  pytest objects_api.py --html=report.html
+# the report will be generated under tests with the specified filename,
+# then copy the path of the file and paste it in the browser to get the readable report.
+
+

@@ -1,0 +1,7 @@
+{
+	"schema": {
+		"language": "{{apiDefinitionLanguage}}",
+		"schema": "{{apiDefinition}}",
+		"type": "{{apiDefinitionType}}"
+	}
+}

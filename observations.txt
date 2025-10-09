@@ -1,0 +1,16 @@
+
+Error handling has not been implemented in this API
+
+Any parameter value is allowed - This is a bug
+
+Any name for a parameter 'id' is allowed. for e.g. id1, id57, idrt - This is a bug
+
+For the multiple ids, there should be a single parameter such as ids=2,3,4 but currently it accepts as id=2&id=3&id=4
+https://api.restful-api.dev/objects?id=1&id=2&id=3
+
+it should be:
+https://api.restful-api.dev/objects?ids=2,3,4
+
+Currently, patch or put methods are not allowed in this API and are throwing errors.
+
+
