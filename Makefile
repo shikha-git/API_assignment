@@ -1,21 +1,14 @@
- # Define a phony target for 'all' to ensure it's always run
-    .PHONY: all clean test install
+VENV := venv
+PYTHON := $(VENV)/bin/python
 
-    # Default target
-    all: test
+.PHONY: venv
+venv:
+	python3 -m venv $(VENV)
 
-    # Target to run tests
-    test:
-    	pytest
+.PHONY: install
+install: venv
+	$(PYTHON) -m pip install -r requirements.txt
 
-    # Target to install dependencies
-    install:
-    	pip install -r requirements.txt
-
-    # Target to clean up generated files
-    clean:
-    	rm -rf __pycache__ .pytest_cache .coverage htmlcov/
-
-    # Example of a target to run a specific Python script
-    run_script:
-    	pytest objects_api.py -k <test_name>
+.PHONY: test
+test: install
+	$(PYTHON) -m pytest
