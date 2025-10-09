@@ -17,3 +17,4 @@ To run a particular test, use "pytest objects_api.py -k <test-name>
 
 Use the command pytest objects_api.py --html=report.html to generate the report.
 
+pytest.yml fil is created in github to run the pytest whenver there is a new code commit.
