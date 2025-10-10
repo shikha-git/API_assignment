@@ -1,20 +1,22 @@
 This project validates API: "https://api.restful-api.dev/objects".
 
-To run the tests, please install Python 3.9 and then pytest ("pip install pytest").
+SETUP:
 
-Then run the make file to install venev and then activate it to run tests
+1. To run the tests, please install Python 3.9 and then pytest ("pip install pytest").
 
-make test
+2. Then run the make file to install venev and then activate it to run tests
 
-source venv/bin/activate
+    2.a make test
+
+    2.b source venv/bin/activate
 
 
-Use "pytest objects_api.py" to run all the tests in this file.
+3. Use "pytest objects_api.py" to run all the tests in this file.
 
-To run a particular test, use "pytest objects_api.py -k <test-name>
+4. To run a particular test, use "pytest objects_api.py -k <test-name>
 
-"pip install pytest-html" to generate the test report and then copy the report.html file path on the browser to view the results.
+5. "pip install pytest-html" to generate the test report and then copy the report.html file path on the browser to view the results.
 
-Use the command pytest objects_api.py --html=report.html to generate the report.
+6. Use the command pytest objects_api.py --html=report.html to generate the report.
 
-pytest.yml fil is created in github to run the pytest whenver there is a new code commit.
+p7. ytest.yml fil is created in github to run the pytest whenver there is a new code commit.
