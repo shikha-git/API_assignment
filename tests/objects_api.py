@@ -1,17 +1,9 @@
 import pytest
 import requests
-from pygments.lexers import data
 
-def api_url():
-    response = requests.get("https://api.restful-api.dev/objects")
-    response.raise_for_status()
-    return response.json()
-
-def test_list_of_all_objects():
-    data = api_url()
+def test_list_of_all_objects(api_url_get):
+    data = api_url_get
     for object in data:
-        print(object)
-        print(object['id'])
         assert(object.keys() is not None)
         assert(object['id'] is not None)
 
@@ -22,8 +14,6 @@ def test_single_object_with_id(id):
     response = requests.get("https://api.restful-api.dev/objects", params=params)
     response.raise_for_status()
     data = response.json()
-    #data = api_url("https://api.restful-api.dev/objects", params=params)
-
     assert(int(data[0]['id']) == id)
 
 
@@ -32,17 +22,14 @@ def test_multiple_objects_with_ids(id):
     params = {'id': id}
     response = requests.get("https://api.restful-api.dev/objects", params=params)
     response.raise_for_status()
-
     data = response.json()
-    #data = api_url("https://api.restful-api.dev/objects", params=params)
-
 
     assert(len(data) == len(id))
     for i in range(len(id)):
         assert(data[i]['id'] == id[i])
 
 @pytest.mark.parametrize('id', [3,5])
-def test_add_object(id):
+def test_add_object(api_url_get, id):
     data = {
        "name": "Apple MacBook Pro 16",
        "data": {
@@ -57,9 +44,7 @@ def test_add_object(id):
     response = requests.post("https://api.restful-api.dev/objects", headers=headers ,json=data, timeout=30)
     response.raise_for_status()
 
-    response = requests.get("https://api.restful-api.dev/objects")
-    response.raise_for_status()
-    data = response.json()
+    data = api_url_get
 
     for object in data:
         if object['id'] == 7:
@@ -71,7 +56,7 @@ def test_add_object(id):
             break
 
 @pytest.mark.xfail
-def test_update_object():
+def test_patch_object(api_url_get):
     data = {
         "name": "Apple MacBook Pro 16 (Updated Name)"
     }
@@ -82,7 +67,7 @@ def test_update_object():
 
     # Check the status code if is unsuccessful then validate that the item has been updated
     if response.status_code == 200:
-        data = api_url()
+        data = api_url_get
 
         for object in data:
             if object['id'] == 7:
