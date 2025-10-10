@@ -1,5 +1,6 @@
+Observations and test cases for the API "https://api.restful-api.dev/objects"
 
-Error handling has not been implemented in this API
+Error handling has not been implemented in this API.
 
 Any parameter value is allowed - This is a bug
 
@@ -12,5 +13,14 @@ it should be:
 https://api.restful-api.dev/objects?ids=2,3,4
 
 Currently, patch or put methods are not allowed in this API and are throwing errors.
+
+Endpoints covered:
+
+1. GET single object - https://api.restful-api.dev/objects/7
+2. GET multiple objects - https://api.restful-api.dev/objects?id3&id=5
+3. GET list of all object - https://api.restful-api.dev/objects
+4. POST an object (add an item)
+5. Update an item using PATCH
+6. Negative tests for invalid paramter value, invalid body, invalid item id
 
 
