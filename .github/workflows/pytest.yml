@@ -29,3 +29,9 @@ jobs:
     - name: Run Tests with Pytest
       working-directory: ./tests
       run: pytest --html=report.html
+
+    - name: Upload Pytest HTML Report
+      uses: actions/upload-artifact@v4
+      with:
+          name: pytest-html-report
+          path: ./reports/report.html # Or the path where your report is generated
