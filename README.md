@@ -14,13 +14,13 @@ SETUP:
 
 4. Use "pytest objects_api.py" to run all the tests in this file.
 
-5. To run a particular test, use "pytest test_objects_api.py -k <test-name>
+5. To run a particular test, use "pytest test_objects_api.py -k your-test-name
 
 6. "pip install pytest-html" to generate the test report and then copy the report.html file path on the browser to view the results.
 
 7. Use the command pytest objects_api.py --html=report.html to generate the report.
 
-8. pytest.yml file is created in github to run the pytest whenever there is a new code commit.
+8. CI/CD pipeline has been created in github workflows. pytest.yml file is created in github to run the pytest whenever there is a new code commit.
 
 9. After the workflow completes (CI/CD), navigate to the "Actions" tab in the GitHub repository, select the specific workflow run, and locate the "Artifacts" section. 
 Download the pytest-html-report artifact, which will contain  report.html file.
