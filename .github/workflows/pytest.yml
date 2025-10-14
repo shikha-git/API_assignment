@@ -28,4 +28,4 @@ jobs:
 
     - name: Run Tests with Pytest
       working-directory: ./tests
-      run: pytest
+      run: pytest --html=report.html
