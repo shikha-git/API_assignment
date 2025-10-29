@@ -1,7 +1,51 @@
 {
-	"schema": {
-		"language": "{{apiDefinitionLanguage}}",
-		"schema": "{{apiDefinition}}",
-		"type": "{{apiDefinitionType}}"
+"$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Product",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "name": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "colour": {
+		"type": "string"
+	  },
+	  "capacity GB"	:{
+		  "type": "string"
+	  },
+	  "capacity"	:{
+	  	"type": "string"
+      },
+	  "price"	:{
+	  	"type": "string"
+	  },
+		"generation"	:{
+	  	"type": "string"
+	  },
+		"year"	:{
+	  	"type": "integer"
+	  },
+		"Strap Color"	:{
+	  	"type": "string"
+	  },
+		"Case Size"	:{
+	  	"type": "string"
+	  },
+		"Screen Size"	:{
+	  	"type": "string"
+	  },
+		"CPU Model"	:{
+	  	"type": "string"
+	  },
+		"Hard disk size"	:{
+	  	"type": "string"
+	  }
 	}
+  },
+  "required": ["id", "name", "data"]
 }
